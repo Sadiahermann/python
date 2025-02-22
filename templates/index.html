@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title></title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+        
+        <link rel="stylesheet" href="">
+    </head>
+    <body>
+        <!--[if lt IE 7]>
+            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+        <h1>salut comment tu vas</h1>
+        <a href="/ajouter">ajouter</a>
+
+        
+
+<div class="relative overflow-x-auto">
+    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
+            <tr>
+                <th scope="col" class="px-6 py-3">
+                    nom
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    descrption
+                </th>
+                <th scope="col" class="px-6 py-3">
+                    action
+                </th>
+              
+            </tr>
+        </thead>
+        <tbody>
+          {%    for produit in produits  %}
+          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
+            <th scope="row" class=" 
+                {%if produit.name|length>5%}
+                text-green-600
+                {%else%}
+                text-red-600
+                {%endif%} 
+                px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                {{produit.name}}
+               
+            </th>
+            <td class="px-6 py-4">
+                {{produit.inscription}}
+            </td>
+            <td class="px-6 py-4">
+            <a  href="/modifier/{{produit.id}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+            > (modicier) </a>
+            </td>
+           
+        </tr>
+           {% endfor %}
+          
+        </tbody>
+    </table>
+</div>
+
+        
+        <script src="" async defer></script>
+    </body>
+</html>
