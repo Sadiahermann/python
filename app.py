@@ -21,31 +21,30 @@ def home():
     produits = Produit.query.all()
     return render_template("index.html", produits=produits)
 
-@app.route("/ajouter", methods=["GET", "POST"])
-def ajouter():
-    if request.method == "POST":
-        nom = request.form["name"]
-        description = request.form["inscription"]
-        nouveau_produit = Produit(name=nom, inscription=description)
-        db.session.add(nouveau_produit)
-        db.session.commit()
-        return redirect(url_for("home"))
-    
-    return render_template("ajouter.html")
+@app.route("/utilisateurs", methods=["GET", "POST"])
+def users():
+    return render_template("utilisateurs.html" )
+
+@app.route("/expediteurs", methods=["GET", "POST"])
+def expediteurs():
+    return render_template("expediteurs.html" )
+
+@app.route("/destinateurs", methods=["GET", "POST"])
+def destinateurs():
+    return render_template("destinateurs.html" )
+
+@app.route("/services", methods=["GET", "POST"])
+def services():
+    return render_template("services.html" )
+
+@app.route("/courriers", methods=["GET", "POST"])
+def courriers():
+    return render_template("courriers.html" )
 
 
-
-@app.route("/modifier/<int:id>", methods=["GET", "POST"])
-def modifier(id):
-    produit=Produit.query.get_or_404(id)
-    if request.method == "POST":
-        produit.name = request.form["name"]
-        produit.inscription = request.form["inscription"]
-             
-        db.session.commit()
-        return redirect(url_for("home"))
-    
-    return render_template("modifier.html", produit=produit)
+@app.route("/statuts", methods=["GET", "POST"])
+def statuts():
+    return render_template("statuts.html" )
 
 
 

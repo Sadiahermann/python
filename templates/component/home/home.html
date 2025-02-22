@@ -1,0 +1,466 @@
+<div
+class="h-[calc(100vh-60px)] relative overflow-y-auto overflow-x-hidden p-4 space-y-4 detached-content">
+<nav class="w-full">
+    <ul class="space-y-2 detached-breadcrumb">
+        <li class="text-xs dark:text-white/80">Sliced Pro</li>
+        <li class="text-xl font-semibold text-slate-800 dark:text-slate-100">Dashboard</li>
+    </ul>
+</nav> <!-- Start All Card -->
+<div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+    <div class="grid grid-cols-12 gap-4">
+        <div class="order-1 col-span-12 text-center md:col-span-6 lg:col-span-3 xl:col-span-2 card">
+            <div
+                class="flex items-center justify-center mx-auto mb-3 rounded-full size-10 bg-purple/10 text-purple">
+                <i data-feather="dollar-sign" class="size-5"></i>
+            </div>
+            <h5 class="mb-0.5 text-lg font-semibold text-slate-800 dark:text-slate-100">$54,715</h5>
+            <p class="text-muted dark:text-darkmuted">Total Revenue</p>
+        </div>
+        <div class="order-2 col-span-12 text-center md:col-span-6 lg:col-span-3 xl:col-span-2 card">
+            <div
+                class="flex items-center justify-center mx-auto mb-3 rounded-full size-10 bg-success/10 text-success">
+                <i data-feather="dollar-sign" class="size-5"></i>
+            </div>
+            <h5 class="mb-0.5 text-lg font-semibold text-slate-800 dark:text-slate-100">$34,152</h5>
+            <p class="text-muted dark:text-darkmuted">Income</p>
+        </div>
+        <div class="order-5 col-span-12 md:col-span-6 xl:order-3 xl:col-span-4 xl:row-span-2 card">
+            <div class="flex items-center justify-between gap-4 mb-4">
+                <h2 class="text-base font-semibold capitalize text-slate-800 dark:text-slate-100">
+                    Product Views</h2>
+                <div>
+                    <div x-data="{ dropdown: false}" class="ltr:ml-auto rtl:mr-auto dropdown">
+                        <a href="javaScript:;" class="text-black dark:text-white"
+                            @click="dropdown = !dropdown" @keydown.escape="dropdown = false">
+                            <svg width="28" height="28" viewbox="0 0 28 28" fill="none"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path
+                                    d="M9 12.75C9.69036 12.75 10.25 13.3096 10.25 14C10.25 14.6904 9.69036 15.25 9 15.25C8.30964 15.25 7.75 14.6904 7.75 14C7.75 13.3096 8.30964 12.75 9 12.75Z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M14 12.75C14.6904 12.75 15.25 13.3096 15.25 14C15.25 14.6904 14.6904 15.25 14 15.25C13.3096 15.25 12.75 14.6904 12.75 14C12.75 13.3096 13.3096 12.75 14 12.75Z"
+                                    fill="currentColor"></path>
+                                <path
+                                    d="M20.25 14C20.25 13.3096 19.6904 12.75 19 12.75C18.3096 12.75 17.75 13.3096 17.75 14C17.75 14.6904 18.3096 15.25 19 15.25C19.6904 15.25 20.25 14.6904 20.25 14Z"
+                                    fill="currentColor"></path>
+                            </svg>
+                        </a>
+                        <ul x-show="dropdown" @click.away="dropdown = false" x-transition=""
+                            x-transition.duration.300ms=""
+                            class=" whitespace-nowrap ltr:right-0 rtl:left-0">
+                            <li><a href="javascript:;">Weekly</a></li>
+                            <li><a href="javascript:;">Monthly</a></li>
+                            <li><a href="javascript:;">Yearly</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div id="productViewsCharts" dir="ltr" class="!min-h-[auto]"></div>
+        </div>
+        <div class="order-5 col-span-12 md:col-span-6 xl:order-4 xl:col-span-4 xl:row-span-2 card">
+            <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">
+                Users by Device</h2>
+            <div id="chart6" dir="ltr" class="!min-h-[auto]"></div>
+        </div>
+        <div
+            class="order-3 col-span-12 text-center md:col-span-6 lg:col-span-3 xl:order-5 xl:col-span-2 card">
+            <div
+                class="flex items-center justify-center mx-auto mb-3 rounded-full size-10 bg-danger/10 text-danger">
+                <i data-feather="dollar-sign" class="size-5"></i>
+            </div>
+            <h5 class="mb-0.5 text-lg font-semibold text-slate-800 dark:text-slate-100">$15,903</h5>
+            <p class="text-muted dark:text-darkmuted">Expense</p>
+        </div>
+        <div
+            class="order-3 col-span-12 text-center md:col-span-6 lg:col-span-3 xl:order-6 xl:col-span-2 card">
+            <div
+                class="flex items-center justify-center mx-auto mb-3 text-pink-500 rounded-full size-10 bg-pink-500/10">
+                <i data-feather="users" class="size-5"></i>
+            </div>
+            <h5 class="mb-0.5 text-lg font-semibold text-slate-800 dark:text-slate-100">15k</h5>
+            <p class="text-muted dark:text-darkmuted">Happy Customers</p>
+        </div>
+        <div class="relative order-7 col-span-12 md:col-span-6 2xl:col-span-4 2xl:row-span-2 card">
+            <div class="absolute z-10 top-4 left-4">
+                <h5 class="mb-2 text-lg font-semibold">$349.36M</h5>
+                <div class="flex items-center gap-2 mb-1 text-muted dark:text-darkmuted">
+                    <div class="rounded-full size-2 bg-purple"></div>
+                    <div class="text-sm">$154.65k Income</div>
+                </div>
+                <div class="flex items-center gap-2 text-muted dark:text-darkmuted">
+                    <div class="rounded-full size-2 bg-success"></div>
+                    <div class="text-sm">$78.10k Expense</div>
+                </div>
+            </div>
+            <div id="incomeExpenseChart" dir="ltr" class="!min-h-[auto]"></div>
+        </div>
+        <div class="order-9 col-span-6 md:col-span-2 2xl:col-span-1 2xl:order-8 card">
+            <img src="assets/images/us.svg" alt="" class="object-cover rounded-full size-8">
+            <h6 class="mt-2 truncate text-slate-800 dark:text-slate-100">United States</h6>
+            <h6 class="text-muted dark:text-darkmuted">3k</h6>
+        </div>
+        <div class="order-10 col-span-6 md:col-span-2 2xl:col-span-1 2xl:order-9 card">
+            <img src="assets/images/br.svg" alt="" class="object-cover rounded-full size-8">
+            <h6 class="mt-2 truncate text-slate-800 dark:text-slate-100">Brazil</h6>
+            <h6 class="text-muted dark:text-darkmuted">1.8k</h6>
+        </div>
+        <div class="order-11 col-span-6 md:col-span-2 2xl:col-span-1 2xl:order-10 card">
+            <img src="assets/images/au.svg" alt="" class="object-cover rounded-full size-8">
+            <h6 class="mt-2 truncate text-slate-800 dark:text-slate-100">Australia</h6>
+            <h6 class="text-muted dark:text-darkmuted">1.6k</h6>
+        </div>
+        <div class="order-12 col-span-6 md:col-span-2 2xl:col-span-1 2xl:order-11 card">
+            <img src="assets/images/cn.svg" alt="" class="object-cover rounded-full size-8">
+            <h6 class="mt-2 truncate text-slate-800 dark:text-slate-100">China</h6>
+            <h6 class="text-muted dark:text-darkmuted">1.2k</h6>
+        </div>
+        <div class="order-8 col-span-12 md:col-span-6 2xl:order-12 2xl:col-span-4 2xl:row-span-2">
+            <h2 class="mb-3 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">
+                Team Members</h2>
+            <div class="flex items-center gap-3 p-3 mb-4 card">
+                <img src="assets/images/avatar-7.png" alt="" class="rounded-md size-10 shrink-0">
+                <div class="grow">
+                    <h6 class="font-semibold"><a href="#!">Audie Bogan</a></h6>
+                    <p class="text-muted dark:text-darkmuted">Store Manager</p>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="#!">
+                        <i data-feather="mail"
+                            class="transition-all text-muted dark:text-darkmuted hover:text-purple dark:hover:text-purple size-5"></i>
+                    </a>
+                    <a href="#!">
+                        <i data-feather="phone-call"
+                            class="transition-all text-muted dark:text-darkmuted hover:text-purple dark:hover:text-purple size-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 mb-4 card">
+                <img src="assets/images/avatar-9.png" alt="" class="rounded-md size-10 shrink-0">
+                <div class="grow">
+                    <h6 class="font-semibold"><a href="#!">Leopoldo White</a></h6>
+                    <p class="text-muted dark:text-darkmuted">Retail sales associates</p>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="#!">
+                        <i data-feather="mail"
+                            class="transition-all text-muted dark:text-darkmuted hover:text-purple dark:hover:text-purple size-5"></i>
+                    </a>
+                    <a href="#!">
+                        <i data-feather="phone-call"
+                            class="transition-all text-muted dark:text-darkmuted hover:text-purple dark:hover:text-purple size-5"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="flex items-center gap-3 p-3 card">
+                <img src="assets/images/avatar-8.png" alt="" class="rounded-md size-10 shrink-0">
+                <div class="grow">
+                    <h6 class="font-semibold"><a href="#!">Lesley Lynch</a></h6>
+                    <p class="text-muted dark:text-darkmuted">Team leaders</p>
+                </div>
+                <div class="flex items-center gap-3 shrink-0">
+                    <a href="#!">
+                        <i data-feather="mail"
+                            class="transition-all text-muted dark:text-darkmuted hover:text-purple dark:hover:text-purple size-5"></i>
+                    </a>
+                    <a href="#!">
+                        <i data-feather="phone-call"
+                            class="transition-all text-muted dark:text-darkmuted hover:text-purple dark:hover:text-purple size-5"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="col-span-6 md:col-span-2 2xl:col-span-1 card order-[13]">
+            <img src="assets/images/de.svg" alt="" class="object-cover rounded-full size-8">
+            <h6 class="mt-2 truncate text-slate-800 dark:text-slate-100">Germany</h6>
+            <h6 class="text-muted dark:text-darkmuted">0.8k</h6>
+        </div>
+        <div class="col-span-6 md:col-span-2 2xl:col-span-1 card order-[14]">
+            <img src="assets/images/ru.svg" alt="" class="object-cover rounded-full size-8">
+            <h6 class="mt-2 truncate text-slate-800 dark:text-slate-100">Russia</h6>
+            <h6 class="text-muted dark:text-darkmuted">0.7k</h6>
+        </div>
+        <div class="col-span-6 md:col-span-2 2xl:col-span-1 card order-[15]">
+            <img src="assets/images/es.svg" alt="" class="object-cover rounded-full size-8">
+            <h6 class="mt-2 truncate text-slate-800 dark:text-slate-100">Spain</h6>
+            <h6 class="text-muted dark:text-darkmuted">0.3k</h6>
+        </div>
+        <div class="col-span-6 md:col-span-2 2xl:col-span-1 card order-[16]">
+            <img src="assets/images/vn.svg" alt="" class="object-cover rounded-full size-8">
+            <h6 class="mt-2 truncate text-slate-800 dark:text-slate-100">Vietnam</h6>
+            <h6 class="text-muted dark:text-darkmuted">0.3k</h6>
+        </div>
+        <div class="col-span-12 2xl:col-span-9 order-[17] card">
+            <div class="flex items-center gap-3 mb-4">
+                <h2
+                    class="text-base font-semibold capitalize text-slate-800 dark:text-slate-100 grow">
+                    Products List</h2>
+                <a href="#"
+                    class="px-3 py-1.5 rounded-md text-xs border border-black/20 dark:border-darkborder text-muted"><i
+                        class="align-bottom ltr:mr-1 rtl:ml-1 ri-filter-line"></i> Filters</a>
+            </div>
+            <div class="overflow-auto">
+                <table class="min-w-[640px] w-full">
+                    <thead>
+                        <tr class="ltr:text-left rtl:text-right">
+                            <th>Product Name</th>
+                            <th>Categories</th>
+                            <th>Total Sales</th>
+                            <th>Stock</th>
+                            <th>Price</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="text-muted">
+                            <td><a href="#!" class="capitalize">Gorgeous Metal Shirt</a></td>
+                            <td>Headphones</td>
+                            <td>2952</td>
+                            <td>258</td>
+                            <td>$142.00</td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-success"><i
+                                            class="ri-eye-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-purple"><i
+                                            class="ri-edit-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-danger"><i
+                                            class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-muted">
+                            <td><a href="#!" class="capitalize">Handmade Plastic Table</a></td>
+                            <td>Fashion</td>
+                            <td>2341</td>
+                            <td>140</td>
+                            <td>$242.00</td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-success"><i
+                                            class="ri-eye-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-purple"><i
+                                            class="ri-edit-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-danger"><i
+                                            class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-muted">
+                            <td><a href="#!" class="capitalize">Unbranded Frozen Ball</a></td>
+                            <td>Accessories</td>
+                            <td>2792</td>
+                            <td>654</td>
+                            <td>$813.00</td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-success"><i
+                                            class="ri-eye-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-purple"><i
+                                            class="ri-edit-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-danger"><i
+                                            class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-muted">
+                            <td><a href="#!" class="capitalize">Handcrafted Metal Shirt</a></td>
+                            <td>Bag</td>
+                            <td>1765</td>
+                            <td>265</td>
+                            <td>$990.00</td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-success"><i
+                                            class="ri-eye-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-purple"><i
+                                            class="ri-edit-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-danger"><i
+                                            class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-muted">
+                            <td><a href="#!" class="capitalize">Tasty Soft Fish</a></td>
+                            <td>Shoes</td>
+                            <td>2268</td>
+                            <td>322</td>
+                            <td>$447.00</td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-success"><i
+                                            class="ri-eye-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-purple"><i
+                                            class="ri-edit-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-danger"><i
+                                            class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr class="text-muted">
+                            <td><a href="#!" class="capitalize">Refined Concrete Gloves</a></td>
+                            <td>Watch</td>
+                            <td>3128</td>
+                            <td>985</td>
+                            <td>$616.00</td>
+                            <td>
+                                <div class="flex items-center gap-3">
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-success"><i
+                                            class="ri-eye-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-purple"><i
+                                            class="ri-edit-line"></i></a>
+                                    <a href="#!"
+                                        class="transition duration-200 ease-linear text-muted hover:text-danger"><i
+                                            class="ri-delete-bin-line"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="items-center gap-3 mt-4 sm:flex">
+                <p class="mb-2 text-muted grow sm:mb-0">Showing <b>05</b> of <b>07</b> Results</p>
+                <ul class="inline-flex items-center gap-1 shrink-0">
+                    <li><button type="button"
+                            class="flex justify-center px-2.5 py-1 rounded transition text-muted hover:text-purple border border-slate-200 hover:border-purple dark:border-darkborder dark:text-darkmuted dark:hover:text-purple dark:hover:border-purple">First</button>
+                    </li>
+                    <li><button type="button"
+                            class="flex justify-center px-2.5 py-1 rounded transition text-muted hover:text-purple border border-slate-200 hover:border-purple dark:border-darkborder dark:text-darkmuted dark:hover:text-purple dark:hover:border-purple">Prev</button>
+                    </li>
+                    <li><button type="button"
+                            class="flex justify-center px-2.5 py-1 rounded transition text-muted hover:text-purple border border-slate-200 hover:border-purple dark:border-darkborder dark:text-darkmuted dark:hover:text-purple dark:hover:border-purple">1</button>
+                    </li>
+                    <li><button type="button"
+                            class="flex justify-center px-2.5 py-1 rounded transition text-purple border border-purple">2</button>
+                    </li>
+                    <li><button type="button"
+                            class="flex justify-center px-2.5 py-1 rounded transition text-muted hover:text-purple border border-slate-200 hover:border-purple dark:border-darkborder dark:text-darkmuted dark:hover:text-purple dark:hover:border-purple">3</button>
+                    </li>
+                    <li><button type="button"
+                            class="flex justify-center px-2.5 py-1 rounded transition text-muted hover:text-purple border border-slate-200 hover:border-purple dark:border-darkborder dark:text-darkmuted dark:hover:text-purple dark:hover:border-purple">Next</button>
+                    </li>
+                    <li><button type="button"
+                            class="flex justify-center px-2.5 py-1 rounded transition text-muted hover:text-purple border border-slate-200 hover:border-purple dark:border-darkborder dark:text-darkmuted dark:hover:text-purple dark:hover:border-purple">Last</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        <div class="col-span-12 card 2xl:col-span-3 order-[18]">
+            <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">
+                Most Selling Products</h2>
+            <div class="flex flex-col gap-3">
+                <div
+                    class="flex gap-2 p-3 border border-gray-200 border-dashed rounded-md dark:border-darkborder">
+                    <img src="assets/images/product-1.png" alt="" class="size-10 shrink-0">
+                    <div class="overflow-hidden grow">
+                        <h6 class="mb-1 capitalize truncate text-slate-800 dark:text-slate-100"><a
+                                href="#!">Elegance color apparel clothes clothing</a></h6>
+                        <ul class="flex items-center gap-3 text-xs text-muted">
+                            <li>Sales: 158</li>
+                            <li>Fashion</li>
+                        </ul>
+                    </div>
+                    <h6
+                        class="font-bold rtl:float-left ltr:float-right text-slate-800 dark:text-slate-100">
+                        $49.99</h6>
+                </div>
+                <div
+                    class="flex gap-2 p-3 border border-gray-200 border-dashed rounded-md dark:border-darkborder">
+                    <img src="assets/images/product-2.png" alt="" class="size-10 shrink-0">
+                    <div class="overflow-hidden grow">
+                        <h6 class="mb-1 capitalize truncate text-slate-800 dark:text-slate-100"><a
+                                href="#!">Graphic tshirt trendy</a></h6>
+                        <ul class="flex items-center gap-3 text-xs text-muted">
+                            <li>Sales: 264</li>
+                            <li>Women Fashion</li>
+                        </ul>
+                    </div>
+                    <h6
+                        class="font-bold rtl:float-left ltr:float-right text-slate-800 dark:text-slate-100">
+                        $85.77</h6>
+                </div>
+                <div
+                    class="flex gap-2 p-3 border border-gray-200 border-dashed rounded-md dark:border-darkborder">
+                    <img src="assets/images/product-3.png" alt="" class="size-10 shrink-0">
+                    <div class="overflow-hidden grow">
+                        <h6 class="mb-1 capitalize truncate text-slate-800 dark:text-slate-100"><a
+                                href="#!">Simple Gray t-shirt</a></h6>
+                        <ul class="flex items-center gap-3 text-xs text-muted">
+                            <li>Sales: 365</li>
+                            <li>Fashion</li>
+                        </ul>
+                    </div>
+                    <h6
+                        class="font-bold rtl:float-left ltr:float-right text-slate-800 dark:text-slate-100">
+                        $73.22</h6>
+                </div>
+                <div
+                    class="flex gap-2 p-3 border border-gray-200 border-dashed rounded-md dark:border-darkborder">
+                    <img src="assets/images/product-4.png" alt="" class="size-10 shrink-0">
+                    <div class="overflow-hidden grow">
+                        <h6 class="mb-1 capitalize truncate text-slate-800 dark:text-slate-100"><a
+                                href="#!">Modern minimal headphone</a></h6>
+                        <ul class="flex items-center gap-3 text-xs text-muted">
+                            <li>Sales: 144</li>
+                            <li>Headphones</li>
+                        </ul>
+                    </div>
+                    <h6
+                        class="font-bold rtl:float-left ltr:float-right text-slate-800 dark:text-slate-100">
+                        $164.20</h6>
+                </div>
+                <div
+                    class="flex gap-2 p-3 border border-gray-200 border-dashed rounded-md dark:border-darkborder">
+                    <img src="assets/images/product-5.png" alt="" class="size-10 shrink-0">
+                    <div class="overflow-hidden grow">
+                        <h6 class="mb-1 capitalize truncate text-slate-800 dark:text-slate-100"><a
+                                href="#!">Top view cap</a></h6>
+                        <ul class="flex items-center gap-3 text-xs text-muted">
+                            <li>Sales: 648</li>
+                            <li>Accessories</li>
+                        </ul>
+                    </div>
+                    <h6
+                        class="font-bold rtl:float-left ltr:float-right text-slate-800 dark:text-slate-100">
+                        $99.49</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- End All Card -->
+<!-- Start Footer -->
+<footer class="py-2 text-center text-black dark:text-darkmuted ltr:md:text-left rtl:md:text-right">
+    <span class="hidden ltr:float-right rtl:float-left md:inline-block">
+        Crafted with
+        <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"
+            class="w-4 h-4 inline-block relative -mt-[2px]">
+            <path
+                d="M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853Z"
+                class="fill-purple"></path>
+        </svg>
+        by
+        <a href="javascript:void(0);">SRBThemes</a>
+    </span>
+    <p x-data="{ year: new Date().getFullYear() }">
+        &copy; <span x-text="year"></span> Sliced Pro.
+    </p>
+</footer>
+<!-- End Footer -->
+</div>

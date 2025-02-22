@@ -1,73 +1,65 @@
 <!DOCTYPE html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]>      <html class="no-js"> <!--<![endif]-->
-<html>
-    <head>
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title></title>
-        <meta name="description" content="">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
-        
-        <link rel="stylesheet" href="">
-    </head>
-    <body>
-        <!--[if lt IE 7]>
-            <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="#">upgrade your browser</a> to improve your experience.</p>
-        <![endif]-->
-        <h1>salut comment tu vas</h1>
-        <a href="/ajouter">ajouter</a>
+<html
+  lang="en"
+  :dir="$store.app.direction"
+  x-data="{ direction: $store.app.direction || 'ltr' }"
+  x-bind:dir="direction"
+  class="group/item"
+  :data-mode="$store.app.mode"
+  :data-sidebar="$store.app.sidebarMode"
+>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Ecommerce Dashboard | Sliced Pro - Tailwind CSS Admin & Dashboard Template
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      content="Tailwind CSS Admin & Dashboard Template"
+      name="description"
+    />
+    <meta content="SRBThemes" name="author" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <!-- plugins CSS -->
 
-        
+    <!-- Icons CSS -->
 
-<div class="relative overflow-x-auto">
-    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-        <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-            <tr>
-                <th scope="col" class="px-6 py-3">
-                    nom
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    descrption
-                </th>
-                <th scope="col" class="px-6 py-3">
-                    action
-                </th>
-              
-            </tr>
-        </thead>
-        <tbody>
-          {%    for produit in produits  %}
-          <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 border-gray-200">
-            <th scope="row" class=" 
-                {%if produit.name|length>5%}
-                text-green-600
-                {%else%}
-                text-red-600
-                {%endif%} 
-                px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                {{produit.name}}
-               
-            </th>
-            <td class="px-6 py-4">
-                {{produit.inscription}}
-            </td>
-            <td class="px-6 py-4">
-            <a  href="/modifier/{{produit.id}}" class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
-            > (modicier) </a>
-            </td>
-           
-        </tr>
-           {% endfor %}
-          
-        </tbody>
-    </table>
-</div>
+    <!-- Tailwind CSS -->
 
-        
-        <script src="" async defer></script>
-    </body>
+    <script
+      type="module"
+      crossorigin=""
+      src="{{url_for('static',filename='assets/main-0ff05731.js')}}"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='assets/css/main.css')}}"
+    />
+  </head>
+
+  <body
+    x-data="main"
+    x-init="$store.app.hasCreative = window.location.href.includes('creative.html') , $store.app.hasdetached = window.location.href.includes('detached.html')"
+    :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.fullscreen ? 'full' : '' , $store.app.hasCreative ? 'detached ' : '' , $store.app.hasdetached ? 'detached detached-simple ' : '' , $store.app.layout  ]"
+    class="relative overflow-x-hidden text-[15px] antialiased font-normal text-black font-primary dark:text-white vertical"
+    x-data="modals"
+  >
+    <div class="flex mx-auto main-container">
+      {% include "component/sidebar.html" %}
+
+      <div class="flex-1 main-content">
+        {% include "component/navbar.html" %}
+        {% include "component/home/home.html" %}
+      </div>
+    </div>
+
+    <script src="" async defer></script>
+
+    <script src="{{url_for('static',filename='assets/libs/%40alpinejs/persist/cdn.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/libs/%40alpinejs/collapse/cdn.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/libs/feather-icons/feather.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/js/pages/ecommerce-dashboard.js')}}"></script>
+  </body>
 </html>

@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html
+  lang="en"
+  :dir="$store.app.direction"
+  x-data="{ direction: $store.app.direction || 'ltr' }"
+  x-bind:dir="direction"
+  class="group/item"
+  :data-mode="$store.app.mode"
+  :data-sidebar="$store.app.sidebarMode"
+>
+  <head>
+    <meta charset="utf-8" />
+    <title>
+      Ecommerce Dashboard | Sliced Pro - Tailwind CSS Admin & Dashboard Template
+    </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      content="Tailwind CSS Admin & Dashboard Template"
+      name="description"
+    />
+    <meta content="SRBThemes" name="author" />
+    <!-- favicon -->
+    <link rel="shortcut icon" href="assets/images/favicon.ico" />
+    <!-- plugins CSS -->
+
+    <!-- Icons CSS -->
+
+    <!-- Tailwind CSS -->
+
+    <script
+      type="module"
+      crossorigin=""
+      src="{{url_for('static',filename='assets/main-0ff05731.js')}}"
+    ></script>
+    <link
+      rel="stylesheet"
+      href="{{url_for('static',filename='assets/css/main.css')}}"
+    />
+  </head>
+
+  <body
+    x-data="main"
+    x-init="$store.app.hasCreative = window.location.href.includes('creative.html') , $store.app.hasdetached = window.location.href.includes('detached.html')"
+    :class="[ $store.app.sidebar ? 'toggle-sidebar' : '', $store.app.fullscreen ? 'full' : '' , $store.app.hasCreative ? 'detached ' : '' , $store.app.hasdetached ? 'detached detached-simple ' : '' , $store.app.layout  ]"
+    class="relative overflow-x-hidden text-[15px] antialiased font-normal text-black font-primary dark:text-white vertical"
+    x-data="modals"
+  >
+    <div class="flex mx-auto main-container">
+      {% include "component/sidebar.html" %}
+
+      <div class="flex-1 main-content">
+        {% include "component/navbar.html" %}
+        <!-- End Topbar --> <!-- Start Content -->
+        <div
+        class="h-[calc(100vh-60px)] relative overflow-y-auto overflow-x-hidden p-4 space-y-4 detached-content">
+        <nav class="w-full">
+            <ul class="space-y-2 detached-breadcrumb">
+                <li class="text-xs dark:text-white/80">Tables</li>
+                <li class="text-xl font-semibold text-slate-800 dark:text-slate-100">Editable</li>
+            </ul>
+        </nav> <!-- Start All Card -->
+        <div class="flex flex-col gap-4 min-h-[calc(100vh-212px)]">
+            <div class="grid grid-cols-1 gap-4">
+                <div class="card">
+                    <h2 class="mb-4 text-base font-semibold capitalize text-slate-800 dark:text-slate-100">
+                        Table Editable</h2>
+                    <div class="overflow-auto" x-data="{ items: [
+                    { id: 1, name: 'Lindsay Walton', title: 'Front-end Developer', phone: '832-333-0011', role: 'Admin' },
+                    { id: 2, name: 'Courtney Henry', title: 'Designer', phone: '551-697-3625', role: 'Owner' },
+                    { id: 3, name: 'Tom Cook', title: 'Director of Product', phone: '208-628-0572', role: 'Admin' },
+                    { id: 4, name: 'Whitney Francis', title: 'Copywriter', phone: '903-342-3348', role: 'Owner' },
+                    { id: 5, name: 'Leonard Krasner', title: 'Senior Designer', phone: '602-690-7009', role: 'Admin' }
+                  ]
+                }">
+                        <caption class="caption-top">
+                            <span class="text-muted">Text Double Click To Edit Table.</span>
+                        </caption>
+                        <table class="min-w-[640px] w-full mt-4 table-hover">
+                            <thead>
+                                <tr class="ltr:text-left rtl:text-right">
+                                    <th>#</th>
+                                    <th>Name</th>
+                                    <th>Title</th>
+                                    <th>Phone No.</th>
+                                    <th>Role</th>
+                                    <th>Action</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <template x-for="item in items" :key="item.id">
+                                    <tr x-show="showElement" x-data="{ showElement: true }">
+                                        <td x-text="item.id"></td>
+                                        <td>
+                                            <span x-text="item.name" x-on:dblclick="
+                                            item.editing = true;
+                                            $nextTick(() => $refs.name.focus());
+                                        " x-show="!item.editing"></span>
+                                            <input type="text" class="form-input" x-ref="name"
+                                                x-model="item.name"
+                                                x-on:keydown.enter="item.editing = false"
+                                                x-show="item.editing">
+                                        </td>
+                                        <td>
+                                            <span x-text="item.title" x-on:dblclick="
+                                            item.editing = true;
+                                            $nextTick(() => $refs.title.focus());
+                                        " x-show="!item.editing"></span>
+                                            <input type="text" class="form-input" x-ref="title"
+                                                x-model="item.title"
+                                                x-on:keydown.enter="item.editing = false"
+                                                x-show="item.editing">
+                                        </td>
+                                        <td>
+                                            <span x-text="item.phone" x-on:dblclick="
+                                            item.editing = true;
+                                            $nextTick(() => $refs.phone.focus());
+                                        " x-show="!item.editing"></span>
+                                            <input type="text" class="form-input" x-ref="phone"
+                                                x-model="item.phone"
+                                                x-on:keydown.enter="item.editing = false"
+                                                x-show="item.editing">
+                                        </td>
+                                        <td>
+                                            <span x-text="item.role" x-on:dblclick="
+                                                item.editing = true;
+                                                $nextTick(() => $refs.role.focus());
+                                            " x-show="!item.editing"></span>
+                                            <select class="form-select" x-ref="role" x-model="item.role"
+                                                x-on:keydown.enter="item.editing = false"
+                                                x-show="item.editing">
+                                                <option>Admin</option>
+                                                <option>Owner</option>
+                                            </select>
+                                        </td>
+                                        <td>
+                                            <button class="text-danger ltr:ml-2 rtl:mr-2"
+                                                x-on:click="showElement = false">
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"
+                                                    class="inline-block w-5 h-5">
+                                                    <path fill="currentColor"
+                                                        d="M17 6H22V8H20V21C20 21.5523 19.5523 22 19 22H5C4.44772 22 4 21.5523 4 21V8H2V6H7V3C7 2.44772 7.44772 2 8 2H16C16.5523 2 17 2.44772 17 3V6ZM18 8H6V20H18V8ZM9 11H11V17H9V11ZM13 11H15V17H13V11ZM9 4V6H15V4H9Z">
+                                                    </path>
+                                                </svg>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                </template>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End All Card -->
+        <!-- Start Footer -->
+        <footer class="py-2 text-center text-black dark:text-darkmuted ltr:md:text-left rtl:md:text-right">
+            <span class="hidden ltr:float-right rtl:float-left md:inline-block">
+                Crafted with
+                <svg xmlns="http://www.w3.org/2000/svg" viewbox="0 0 24 24"
+                    class="w-4 h-4 inline-block relative -mt-[2px]">
+                    <path
+                        d="M12.001 4.52853C14.35 2.42 17.98 2.49 20.2426 4.75736C22.5053 7.02472 22.583 10.637 20.4786 12.993L11.9999 21.485L3.52138 12.993C1.41705 10.637 1.49571 7.01901 3.75736 4.75736C6.02157 2.49315 9.64519 2.41687 12.001 4.52853Z"
+                        class="fill-purple"></path>
+                </svg>
+                by
+                <a href="javascript:void(0);">SRBThemes</a>
+            </span>
+            <p x-data="{ year: new Date().getFullYear() }">
+                &copy; <span x-text="year"></span> Sliced Pro.
+            </p>
+        </footer>
+        <!-- End Footer -->
+    </div>
+      </div>
+    </div>
+
+    <script src="" async defer></script>
+
+    <script src="{{url_for('static',filename='assets/libs/%40alpinejs/persist/cdn.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/libs/%40alpinejs/collapse/cdn.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/libs/feather-icons/feather.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/libs/apexcharts/apexcharts.min.js')}}"></script>
+    <script src="{{url_for('static',filename='assets/js/pages/ecommerce-dashboard.js')}}"></script>
+  </body>
+</html>
